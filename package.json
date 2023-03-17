@@ -1,0 +1,53 @@
+{
+  "name": "vue3-embedded-library-template",
+  "version": "0.0.0",
+  "type": "module",
+  "author": {
+    "name": "Andrew Bastin",
+    "email": "andrewbastin.k@gmail.com",
+    "url": "https://andrewbast.in"
+  },
+  "main": "./dist/example.cjs",
+  "exports": {
+    ".": {
+      "require": "./dist/example.cjs",
+      "import": "./dist/example.js"
+    }
+  },
+  "homepage": "https://github.com/AndrewBastin/vue3-embedded-library-template",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AndrewBastin/vue3-embedded-library-template.git"
+  },
+  "bugs": {
+    "url": "https://github.com/AndrewBastin/vue3-embedded-library-template/issues"
+  },
+  "license": "MIT",
+  "private": true,
+  "files": [
+    "dist/*"
+  ],
+  "scripts": {
+    "build": "vite build",
+    "postinstall": "vite build",
+    "prepare": "vite build",
+    "lint": "eslint src --ext .ts,.js,.vue --ignore-path .gitignore",
+    "lintfix": "eslint src --ext .ts,.js,.vue --ignore-path .gitignore --fix"
+  },
+  "dependencies": {
+    "vue": "^3.2.45"
+  },
+  "devDependencies": {
+    "@types/node": "^18.14.6",
+    "@vitejs/plugin-vue": "^4.0.0",
+    "@vue/eslint-config-typescript": "^11.0.2",
+    "eslint": "^8.35.0",
+    "eslint-config-prettier": "^8.7.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-vue": "^9.9.0",
+    "typescript": "^4.9.5",
+    "vite": "^4.1.0",
+    "vite-plugin-dts": "^2.0.2"
+  },
+  "types": "./dist/main.d.ts"
+}
