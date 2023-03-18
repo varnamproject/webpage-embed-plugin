@@ -28,6 +28,7 @@
     "dist/*"
   ],
   "scripts": {
+    "dev": "vite",
     "build": "vite build",
     "postinstall": "vite build",
     "prepare": "vite build",
@@ -35,7 +36,8 @@
     "lintfix": "eslint src --ext .ts,.js,.vue --ignore-path .gitignore --fix"
   },
   "dependencies": {
-    "vue": "^3.2.45"
+    "vue": "^3.2.45",
+    "webime": "https://github.com/varnamproject/webIME.git"
   },
   "devDependencies": {
     "@types/node": "^18.14.6",
@@ -45,6 +47,7 @@
     "eslint-config-prettier": "^8.7.0",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-vue": "^9.9.0",
+    "prettier": "^2.8.4",
     "typescript": "^4.9.5",
     "vite": "^4.1.0",
     "vite-plugin-dts": "^2.0.2"
