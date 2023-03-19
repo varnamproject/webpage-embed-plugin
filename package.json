@@ -3,9 +3,9 @@
   "version": "0.0.0",
   "type": "module",
   "author": {
-    "name": "Andrew Bastin",
-    "email": "andrewbastin.k@gmail.com",
-    "url": "https://andrewbast.in"
+    "name": "Subin Siby",
+    "email": "mail@subinsb.com",
+    "url": "https://subinsb.com"
   },
   "main": "./dist/example.cjs",
   "exports": {
