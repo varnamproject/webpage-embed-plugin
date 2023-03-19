@@ -1,5 +1,9 @@
 export interface VarnamOptions {
-  langCode: string;
+  schemeID: string;
+  apiURL: string;
 }
 
-export const VARNAM_API_URL = "https://api.varnamproject.com";
+export const DEFAULT_OPTIONS: VarnamOptions = {
+  schemeID: "ml",
+  apiURL: "https://api.varnamproject.com",
+};

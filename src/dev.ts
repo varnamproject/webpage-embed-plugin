@@ -1,3 +1,3 @@
 varnam(document.getElementById("inputElement"), {
-  langCode: "ml",
+  schemaID: "ml",
 });

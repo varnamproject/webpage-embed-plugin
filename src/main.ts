@@ -7,8 +7,8 @@ import { VarnamOptions } from "./common";
  *
  * @param elem DOM element instance to mount the plugin into
  */
-function initialize(elem: Element, options: VarnamOptions) {
-  embed(elem, options);
+function plugVarnam(elem: Element, options: VarnamOptions) {
+  return embed(elem, options);
 }
 
-(window as any).varnam = initialize;
+(window as any).plugVarnam = plugVarnam;

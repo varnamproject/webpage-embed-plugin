@@ -1,7 +1,9 @@
 import Tribute from "webime";
-import "webime/tribute.css";
 
-import { VarnamOptions, VARNAM_API_URL } from "../common";
+import "webime/tribute.css";
+import "./extra.css";
+
+import { DEFAULT_OPTIONS, VarnamOptions } from "../common";
 
 interface AbortControllerMap {
   [inputWord: string]: AbortController;
@@ -11,10 +13,16 @@ interface CommittedSuggestionsMap {
   [inputWord: string]: string[];
 }
 
-function embed(inputElem: Element, options: VarnamOptions) {
-  let tribute,
-    currentSugs: string[] = [];
+interface SuggestionEntry {
+  key: string;
+  value: string;
+}
 
+function embed(inputElem: Element, customOptions: VarnamOptions) {
+  let tribute,
+    currentSugs: SuggestionEntry[] = [];
+
+  const options = { ...DEFAULT_OPTIONS, ...customOptions };
   const committedSugs: CommittedSuggestionsMap = {};
   const fetchControllers: AbortControllerMap = {};
 
@@ -26,7 +34,7 @@ function embed(inputElem: Element, options: VarnamOptions) {
       fetchControllers[inputWordEncoded] = new AbortController();
 
       fetch(
-        new URL(`/tl/${options.langCode}/${inputWordEncoded}`, VARNAM_API_URL),
+        new URL(`/tl/${options.schemeID}/${inputWordEncoded}`, options.apiURL),
         {
           signal: fetchControllers[inputWordEncoded].signal,
         }
@@ -51,11 +59,11 @@ function embed(inputElem: Element, options: VarnamOptions) {
             if (!sugs) return;
             currentSugs = [];
             for (let i = 0; i < sugs.length; i++) {
-              const retval = {
+              const suggestion: SuggestionEntry = {
                 key: text,
                 value: sugs[i].trim(),
               };
-              currentSugs.push(retval);
+              currentSugs.push(suggestion);
             }
             cb(currentSugs);
           });
@@ -63,7 +71,7 @@ function embed(inputElem: Element, options: VarnamOptions) {
       },
 
       menuItemTemplate: (item) => {
-        return "<span>" + item.original.value + "</span>";
+        return "<span>" + (item.original as SuggestionEntry).value + "</span>";
       },
     });
 
@@ -74,7 +82,15 @@ function embed(inputElem: Element, options: VarnamOptions) {
     });
   }
 
+  function unplug() {
+    tribute.detach(inputElem);
+  }
+
   init();
+
+  return {
+    unplug,
+  };
 }
 
 export default embed;
