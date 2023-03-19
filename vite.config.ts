@@ -16,10 +16,9 @@ export default defineConfig({
       formats: ["es", "cjs", "umd"],
 
       name: "Varnam",
-
-      // TODO: Update this to reflect your dist file name
       fileName: "embed",
     },
+    minify: "terser",
   },
   plugins: [vue(), dts()],
 });
