@@ -1,4 +1,4 @@
-import embed from "./plugin";
+import embed from "./embed";
 
 import { VarnamOptions } from "./common";
 

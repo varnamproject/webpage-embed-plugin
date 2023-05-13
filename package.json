@@ -1,55 +1,51 @@
 {
-  "name": "vue3-embedded-library-template",
-  "version": "0.0.0",
-  "type": "module",
+  "name": "varnam-webpage-embed-plugin",
+  "version": "1.0.0",
+  "homepage": "https://varnamproject.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/varnamproject/webpage-embed-plugin.git"
+  },
+  "license": "MIT",
   "author": {
     "name": "Subin Siby",
     "email": "mail@subinsb.com",
     "url": "https://subinsb.com"
   },
-  "main": "./dist/example.cjs",
+
+  "files": [
+    "dist/**/*",
+    "package.json"
+  ],
+  "main": "dist/index.umd.js",
+  "module": "dist/index.es.js",
+  "types": "dist/index.d.ts",
   "exports": {
     ".": {
-      "require": "./dist/example.cjs",
-      "import": "./dist/example.js"
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.es.js",
+      "require": "./dist/index.umd.js"
     }
   },
-  "homepage": "https://github.com/AndrewBastin/vue3-embedded-library-template",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/AndrewBastin/vue3-embedded-library-template.git"
-  },
-  "bugs": {
-    "url": "https://github.com/AndrewBastin/vue3-embedded-library-template/issues"
-  },
-  "license": "MIT",
-  "private": true,
-  "files": [
-    "dist/*"
-  ],
+
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "lint": "eslint src --ext .ts,.js,.vue --ignore-path .gitignore",
-    "lintfix": "eslint src --ext .ts,.js,.vue --ignore-path .gitignore --fix"
+    "lint": "eslint src --ext .ts,.js --ignore-path .gitignore",
+    "lintfix": "eslint src --ext .ts,.js --ignore-path .gitignore --fix"
   },
+
   "dependencies": {
-    "vue": "^3.2.45",
-    "webime": "https://github.com/varnamproject/webIME.git"
+    "webime": "1.0.2"
   },
   "devDependencies": {
-    "@types/node": "^18.14.6",
-    "@vitejs/plugin-vue": "^4.0.0",
-    "@vue/eslint-config-typescript": "^11.0.2",
     "eslint": "^8.35.0",
     "eslint-config-prettier": "^8.7.0",
     "eslint-plugin-prettier": "^4.2.1",
-    "eslint-plugin-vue": "^9.9.0",
     "prettier": "^2.8.4",
     "terser": "^5.16.6",
     "typescript": "^4.9.5",
     "vite": "^4.1.0",
     "vite-plugin-dts": "^2.0.2"
-  },
-  "types": "./dist/main.d.ts"
+  }
 }

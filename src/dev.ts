@@ -1,3 +1,3 @@
-varnam(document.getElementById("inputElement"), {
+plugVarnam(document.getElementById("inputElement"), {
   schemaID: "ml",
 });

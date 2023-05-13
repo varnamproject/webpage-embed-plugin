@@ -1,9 +1,9 @@
-import Tribute from "webime";
+import WebIME from "webime";
 
-import "webime/tribute.css";
+import "webime/dist/style.css";
 import "./extra.css";
 
-import { DEFAULT_OPTIONS, VarnamOptions } from "../common";
+import { DEFAULT_OPTIONS, VarnamOptions } from "./common";
 
 interface AbortControllerMap {
   [inputWord: string]: AbortController;
@@ -19,7 +19,7 @@ interface SuggestionEntry {
 }
 
 function embed(inputElem: Element, customOptions: VarnamOptions) {
-  let tribute,
+  let webIME,
     currentSugs: SuggestionEntry[] = [];
 
   const options = { ...DEFAULT_OPTIONS, ...customOptions };
@@ -50,7 +50,7 @@ function embed(inputElem: Element, customOptions: VarnamOptions) {
   }
 
   function init() {
-    tribute = new Tribute({
+    webIME = new WebIME({
       values: (text, cb) => {
         if (committedSugs[text]) {
           cb(committedSugs[text]);
@@ -75,15 +75,15 @@ function embed(inputElem: Element, customOptions: VarnamOptions) {
       },
     });
 
-    tribute.attach(inputElem);
+    webIME.attach(inputElem);
 
-    inputElem.addEventListener("tribute-replaced", function (e) {
+    inputElem.addEventListener("webIME-replaced", function (e) {
       committedSugs[e.detail.item.original.value] = currentSugs;
     });
   }
 
   function unplug() {
-    tribute.detach(inputElem);
+    webIME.detach(inputElem);
   }
 
   init();

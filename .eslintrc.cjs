@@ -4,18 +4,17 @@ module.exports = {
     node: true,
     browser: true,
     jest: true,
+    es6: true,
   },
-  plugins: ["vue", "prettier"],
+  parserOptions: {
+    sourceType: "module",
+  },
+  parser: "@typescript-eslint/parser",
+  plugins: ["prettier", "@typescript-eslint"],
   extends: [
-    "@vue/typescript/recommended",
-    "plugin:vue/vue3-recommended",
     "plugin:prettier/recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
   ],
-  ignorePatterns: [
-    "static/**/*",
-    "**/*.d.ts",
-  ],
-  rules: {
-    // TODO: Modify your rules here
-  }
-}
+  ignorePatterns: ["static/**/*", "**/*.d.ts"],
+  rules: {},
+};
